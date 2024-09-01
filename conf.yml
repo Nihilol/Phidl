@@ -1,0 +1,147 @@
+system-params:
+    y_box_correction: 60 #nm                          # Only used in the correction of the y-box
+    width_external_port: 4000 #nm                     # Width of the ports at each bonding pad
+    distance_external_port_north:  100 #micron        # Distance of the ports for each routing in the north direction, from the center of the device; first routing
+    distance_external_port_south:  -100 #micron       # Distance of the ports for each routing in the south direction, from the center of the device; first routing
+    distance_external_port_east:  100 #micron         # Distance of the ports for each routing in the east direction, from the center of the device; first routing
+    distance_external_port_west:  -100 #micron        # Distance of the ports for each routing in the west direction, from the center of the device; first routing
+    distance_nest_2_north:  300 #micron               # Distance of the ports for each routing in the north direction, from the center of the device; second routing
+    distance_nest_2_south:  -300 #micron              # Distance of the ports for each routing in the south direction, from the center of the device; second routing
+    distance_nest_2_east:  300 #micron                # Distance of the ports for each routing in the east direction, from the center of the device; second routing
+    distance_nest_2_west:  -300 #micron               # Distance of the ports for each routing in the west direction, from the center of the device; second routing
+    width_external_box: 200 #microns                  # Where the inner and outer structures meet. Maybe slightly outdates, see above parameters.
+    height_external_box: 200 #microns                 # Same as above. 
+    width_inner_marker: 500 #nm                       # Setting the size of the inner marker
+    length_inner_marker: 10 #microns                  # Setting the length of the inner marker
+    width_outer_marker: 5 #microns                    # Setting the size of the outer marker
+    length_outer_marker: 180 #microns                 # setting the length of the outer marker
+    edge_box_cut_outer_marker: 12 #microns            # Used to cut out a section from the global marker, to insert smaller marker inside
+    N_ports_per_edge: 12                              # The number of ports per cardinal direction
+    width_bonding_box_init: 1900 #microns             # Device bonding box, set for initial value
+    width_port_bonding_pad: 160 #microns              # Width of the ports at each bonding pad
+    width_bonding_pad: 110 #microns                   # Width of the bonding pads
+    length_bonding_pad: 155 #microns                  # Length of the bonding pads
+    width_middle_port: 2 #microns                     # Width of the ports in the overlap between inner and outer structure
+    height_bonding_box: 1900 #microns                 # Controls the y-size of the bounding box of each device
+    width_bonding_box: 1900 #microns                  # Controls the x-size of the bounding box of each device
+    closing_distance: 3 #microns                      # Overlap between inner and outer structure
+    protection_extra: 20 #microns                     # Layover of the protection layer on the bonding pads
+    length_to_local: 120 #microns
+    transform: 0.5 # microns                          # The translation of the coordinates, usually 0.5 microns in both x and y, to ensure all coordinates are in the first quadrant in beamer. 
+                                                      # make sure to set this, otherwise the SCON and marker files will have incorrect coordinates.
+                                                      # If you do not transform in Beamer, set to 0.
+    bond_extendable: True                             # Whether the local markers need a correction due to larger x-width
+    north_south_inner_nest_width_multiplier: 0.4      # The width of the inner nest in the north and south direction
+    east_west_inner_nest_width_multiplier: 0.2        # The height of the inner nest in the east and west direction
+
+marker-params:
+    width_local_marker: 1 #microns                    # Setting the size of the local marker
+    length_local_marker: 20 #microns                  # Setting the length of the local marker
+    distance_from_border: 350 #microns                # The distance from the border of the die
+    x_top_left: [0, 1, 2, 3, 4, 0, 0, 0, 0]           # Relative coordinates of the global markers
+    y_top_left: [0, 0, 0, 0, 0, -1, -2, -3, -4]       # where the relative comes from each corner being 0,0
+    x_bottom_left: [0, 1, 2, 3, 4, 0, 0, 0, 0] 
+    y_bottom_left: [0, 0, 0, 0, 0, 1, 2, 3, 4]
+    x_bottom_right: [0, -1, -2, -3, -4, 0, 0, 0, 0]
+    y_bottom_right: [0, 0, 0, 0, 0, 1, 2, 3, 4]
+    x_top_right: [0, -1, -2, -3, -4, 0, 0, 0, 0]
+    y_top_right: [0, 0, 0, 0, 0, -1, -2, -3, -4]
+
+layer-params:                                         # Each layer has the form of [name, layer number, gds_datatype]
+    die_layer: ["die", 0, 0]
+    marker_layer: ["marker", 1, 0]
+    SiO2_layer: ["SiO2", 2, 0]
+    ohmic1_layer: ["Ohmic Al 1", 3, 0]
+    ohmic2_layer: ["Ohmic Al 2", 4, 0]
+    ohmic3_layer: ["Ohmic Al 3", 5, 0]
+    ohmic4_layer: ["Ohmic Al 4", 6, 0]
+    screening1_layer: ["Screening Ti/Pd 1", 7, 0]
+    screening2_layer: ["Screening Ti/Pd 2", 8, 0]
+    screening3_layer: ["Screening Ti/Pd 3", 9, 0]
+    screening4_layer: ["Screening Ti/Pd 4", 10, 0]
+    plunger1_layer: ["Plunger Ti/Pd 1", 11, 0]
+    plunger2_layer: ["Plunger Ti/Pd 2", 12, 0]
+    plunger3_layer: ["Plunger Ti/Pd 3", 13, 0]
+    plunger4_layer: ["Plunger Ti/Pd 4", 14, 0]
+    barrier1_layer: ["Barrier Ti/Pd 1", 15, 0]
+    barrier2_layer: ["Barrier Ti/Pd 2", 16, 0]
+    barrier3_layer: ["Barrier Ti/Pd 3", 17, 0]
+    barrier4_layer: ["Barrier Ti/Pd 4", 18, 0]
+    text_layer: ["text", 19, 0]
+    plunger_fanout_layer: ["Plunger fanout", 20, 0]
+    barrier_fanout_layer: ["Barrier fanout", 21, 0]
+    screening_fanout_layer: ["Screening fanout", 22, 0]
+    ohmic_fanout_layer: ["Ohmic fanout", 23, 0]
+    metallic_buffer_layer: ["Metallic buffer", 24, 0]
+    ohmic_sem1_layer: ["Ohmic Al SEM1", 25, 0]
+    ohmic_sem2_layer: ["Ohmic Al SEM2", 26, 0]
+    ohmic_sem3_layer: ["Ohmic Al SEM3", 27, 0]
+    ohmic_sem4_layer: ["Ohmic Al SEM4", 28, 0]
+    screening_sem1_layer: ["Screening Ti/Pd SEM1", 29, 0]
+    screening_sem2_layer: ["Screening Ti/Pd SEM2", 30, 0]
+    screening_sem3_layer: ["Screening Ti/Pd SEM3", 31, 0]
+    screening_sem4_layer: ["Screening Ti/Pd SEM4", 32, 0]
+    plunger_sem1_layer: ["Plunger Ti/Pd SEM1", 33, 0]
+    plunger_sem2_layer: ["Plunger Ti/Pd SEM2", 34, 0]
+    plunger_sem3_layer: ["Plunger Ti/Pd SEM3", 35, 0]
+    plunger_sem4_layer: ["Plunger Ti/Pd SEM4", 36, 0]
+    barrier_sem1_layer: ["Barrier Ti/Pd SEM1", 37, 0]
+    barrier_sem2_layer: ["Barrier Ti/Pd SEM2", 38, 0]
+    barrier_sem3_layer: ["Barrier Ti/Pd SEM3", 39, 0]
+    barrier_sem4_layer: ["Barrier Ti/Pd SEM4", 40, 0]
+
+
+buffer-params:
+    circle_radius: 70 #microns                        # Radius of the circle
+
+inner-params:
+    dot-params:
+        dot_radius: 60 #nm                            # Dot radius
+        sensordot_radius: 90 #nm                      # Sensordot radius
+        dot_width_gate: 50 #nm                        # width of connection dot gate
+        angle_resolution: 10 #nm                      # Resolution of design
+        sensor_width_gate: 60 #nm                     # Width of connecting sensor dot gate
+        pitch_dots: 200 #nm                           # Pitch of the dots
+        distance_from_sensor_to_dot: 200 #nm          # Distance from sensor to dot
+        distance_from_sensordot_to_ohmic: 50 #nm      # Distance from sensordot to barrier
+        distance_from_sensordot_to_barrier: 2.5 #nm   # Distance from sensordot to barrier
+        distance_from_sensordot_to_screening_gate: 10 #nm
+        start_x: 0 #nm                                # The starting x-coordinate dot 1,1
+        start_y: 0 #nm                                # Starting y-coordinate of dot 1,1
+        amount_of_dots_1: 2                           # Amount of dots in the first row, first column
+        amount_of_dots_2: 2                           # Amount of dots in the second row, first column
+        amount_of_dots_3: 3                           # Amount of dots in the first row, second column
+        amount_of_dots_4: 3                           # Amount of dots in the second row, second column
+    screening-params:
+        screen_length: 100 #nm                        # Size of the screening gate above dots
+        gate_length_screen: 250 #nm                   # Length of the connecting screening gate
+        overhang_from_plunger_gates: 10 #nm           # Overhang of the screening gate from the plunger gates
+        length_from_dot_perimeter: 10 #nm
+        screening_gate_width: 50 #nm                  # Width of the screening gate
+    barrier-params:
+        width_barrier: 45 #nm                         # Width of the barriers
+        width_cross: 45 #nm                           # Width of the barrier crosses
+        length_cross: 82 #nm                          # Length of the barrier crosses
+        middle_cross_length_addition: 100 #nm         # Same as above, but for the middle barrier crosses
+        lenght_barrier_between_sensor_and_dot: 200 #nm# Lenght of the barrier in between the sensordot and the dot
+        tilt_barrier_between_sensor_and_dot: 30 #nm   # The added length on one side, to ensure no thinning of the gates
+    gate_length_start: 300 #nm                        # Starting point for list of increasingly large gate lengths, so ensure proper fan-out
+    gate_length_end: 500 #nm                          # End point for list of increasingly large gate lengths, so ensure proper fan-out
+    middle_gate_addition: 50 #nm                      # If uneven number of gates, the middle gate will be slightly larger
+    appendage_length_addition: 100 #nm                # Same as above, but for the appendages
+    local_marker_positions_1: [160, 185, 210, 235]    #micron # The position of the 3 inner local markers, set in microns
+    local_marker_positions_2: [160, 185, 210, 235]    #micron # in 45 degree diagonal angle away from the center.
+    local_marker_positions_3: [160, 185, 210, 235]    #micron
+    local_marker_positions_4: [160, 185, 210, 235]    #micron
+
+  
+outer-params:
+    distance_text_from_y_border: 350 #microns         # Distance marker for text
+    distance_text_from_middle: -500 #microns          # How far the markers are from the border
+    visual_marker_length: 400 #microns                # Length of the visual marker
+    visual_marker_width: 100 #microns                 # Width of the visual marker
+    distance_structure_from_center: 0.20              # Parameter used for placing each design, on the chip
+    width_die: 6 #millimeters                         # Width of the chip. 6mm    
+    length_die: 6 #millimeters                        # Length of the chip. 6mm
+    name_of_chip: "AXL MkX QT828"                          # Name of the chip
+    
